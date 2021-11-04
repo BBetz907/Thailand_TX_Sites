@@ -1,1 +1,1 @@
-read me
+This file modifies a wide text file of monthly results from a DHIS2 pivot table on InfoLink. It cleans, transforms, and aligns the data structure with a pared down version of the site level PEPFAR MER Structured data set.
