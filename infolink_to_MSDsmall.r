@@ -15,7 +15,7 @@ thailand_custom <- thailand_sites_infolink %>%
   tidyr::pivot_longer(cols = contains("_2"), names_to = "month_year", values_to = "values") %>%
   dplyr::filter(str_detect(dataname,"VERIFY"), !is.na(values)) %>%
   dplyr::mutate(country_name = orgunitlevel2,
-                PSNU = if_else(str_detect(orgunitlevel3, "Chiang"), orgunitlevel3, str_to_title(orgunitlevel3)),
+                PSNU = if_else(orgunitlevel3 == "Ubonratchathani", "Ubon Ratchathani", if_else(orgunitlevel3=="Chonburi", "Chon Buri", if_else(orgunitlevel3 =="Pathumthani", "Pathum Thani", orgunitlevel3))),
                 sitename = orgunitlevel5,
                 indicator = if_else(str_detect(dataname, "TX_PVLS_VERIFY"), "TX_PVLS_VERIFY", dataname),
                 funding_agency = "USAID",
@@ -35,3 +35,5 @@ thailand_custom <- thailand_sites_infolink %>%
 table(thailand_custom$PSNU)
 
 write.csv(thailand_custom, "dataout/Thailand FY20-21 Custom Indicators.csv", na = "", row.names = FALSE)
+
+
