@@ -35,5 +35,3 @@ thailand_custom <- thailand_sites_infolink %>%
 table(thailand_custom$PSNU)
 
 write.csv(thailand_custom, "dataout/Thailand FY20-21 Custom Indicators.csv", na = "", row.names = FALSE)
-
-
